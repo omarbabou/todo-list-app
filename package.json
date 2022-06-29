@@ -4,7 +4,8 @@
   "description": "To-do list\" is an application that allows a user to keep track of tasks they need to do and allows the user to mark them as complete and clear them from the UI once they are done.",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
