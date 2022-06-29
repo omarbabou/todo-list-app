@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import './css/index.css';
 
 function component() {
   const element = document.createElement('div');
@@ -6,6 +7,7 @@ function component() {
   // Lodash, now imported by this script
   // eslint-disable-next-line no-undef
   element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+  element.classList.add('hello');
 
   return element;
 }
