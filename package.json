@@ -2,7 +2,7 @@
   "name": "todo-list-",
   "version": "1.0.0",
   "description": "To-do list\" is an application that allows a user to keep track of tasks they need to do and allows the user to mark them as complete and clear them from the UI once they are done.",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,5 +29,8 @@
     "stylelint-scss": "^3.21.0",
     "webpack": "^5.73.0",
     "webpack-cli": "^4.10.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
   }
 }
