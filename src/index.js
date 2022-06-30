@@ -1,8 +1,6 @@
 import './css/index.css';
 
-const tasksList = document.querySelector('ul');
-
-const tasks = [
+const todoObjectArray = [
   {
     description: 'Run 30 min',
     completed: false,
@@ -18,23 +16,24 @@ const tasks = [
     completed: false,
     index: 2,
   },
+  {
+    id: 4,
+    title: 'write some codes',
+    completed: false,
+  },
 ];
 
-const populateTasks = () => {
-  tasksList.innerHTML = '';
-  for (let i = 0; i < tasks.length; i += 1) {
-    tasksList.innerHTML += `
-      <li class="task-item">
-        <div class="task-info">
-          <input type="checkbox" name="" id="">
-          <p>${tasks[i].description}</p>
-        </div>
-        <div class="dots">
-          <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-        </div>
-      </li>
-  `;
-  }
-};
+const taskList = document.getElementById('task-list');
 
-populateTasks();
+function renderBook() {
+  taskList.innerHTML = '';
+  todoObjectArray.forEach((todoObject, index) => {
+    taskList.innerHTML += `<ul class="todoTask" id="${index + 1}">
+                  <li><input type="checkbox" id="checkbox" onchange="ChnageCompleted(${todoObject.id})" name="checkbox"></li>        
+                  <li class="todoName">${todoObject.title}</li>    
+                  <li><img src="./images/dots.png" alt="icon"></li>   
+                  </ul> `;
+  });
+}
+
+window.onload = () => renderBook();
