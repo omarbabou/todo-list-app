@@ -1,42 +1,58 @@
 /* eslint-disable indent */
 import './css/index.css';
+import {
+  loadList,
+  addToDo,
+} from './add-remove.js';
 
-const todoObjectArray = [
-  {
-    id: 1,
-    title: 'Zoom meeting at 11 am',
-    completed: false,
-  },
-  {
-    id: 2,
-    title: 'Go to church...',
-    completed: false,
-  },
-  {
-    id: 3,
-    title: 'walking during the night',
-    completed: false,
-  },
-  {
-    id: 4,
-    title: 'write some codes',
-    completed: false,
-  },
-];
+const input = document.querySelector('.todoInput');
+const refresh = document.querySelector('.refresh');
 
-const taskList = document.getElementById('task-list');
+let LIST = '';
+let id = '';
+const data = localStorage.getItem('todoStore');
 
-function renderBook() {
-  taskList.innerHTML = '';
-  todoObjectArray.forEach((todoObject, index) => {
-    taskList.innerHTML += `<ul class="todoTask" id="${index + 1}">
-                  <li><input type="checkbox" id="checkbox" onchange="ChangeCompleted(${
-                    todoObject.id
-                  })" name="checkbox"></li>        
-                  <li class="todoName">${todoObject.title}</li>    
-                  <li><i class="fa fa-ellipsis-v"></i></li>   
-                  </ul> `;
-  });
+if (data) {
+  LIST = JSON.parse(data);
+  id = LIST.length;
+  loadList(LIST);
+} else {
+  LIST = [];
+  id = 0;
 }
 
-window.onload = () => renderBook();
+refresh.addEventListener('click', () => {
+  localStorage.reload();
+});
+
+const pushToDo = () => {
+  const data = localStorage.getItem('todoStore');
+
+  if (data) {
+    LIST = JSON.parse(data);
+    id = LIST.length;
+    loadList(LIST);
+  } else {
+    LIST = [];
+    id = 0;
+  }
+  const toDo = input.value;
+  if (toDo) {
+    addToDo(toDo, id, false);
+
+    LIST.push({
+      name: toDo,
+      index: id,
+      done: false,
+    });
+    loadList(LIST);
+    localStorage.setItem('todoStore', JSON.stringify(LIST));
+    id += 1;
+  }
+  input.value = '';
+};
+document.addEventListener('keyup', (event) => {
+  if (event.keyCode === 13) {
+    pushToDo();
+  }
+});
