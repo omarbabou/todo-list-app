@@ -30,3 +30,36 @@ article {
   background-color: white;
   padding: 20px;
 }
+
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: baseline;
+}
+
+h1 {
+  font-size: 1rem;
+}
+
+input {
+  border: none;
+  font-family: inherit;
+  font-style: italic;
+  font-size: inherit;
+  padding: 10px;
+  max-width: 250px;
+  background-color: white;
+}
+
+ul li,
+input {
+  border-bottom: 1px solid #272a31;
+}
+
+input:hover {
+  outline: none;
+}
+
+ul {
+  padding: 0;
+}
