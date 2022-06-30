@@ -19,3 +19,22 @@ const tasks = [
     index: 2,
   },
 ];
+
+const populateTasks = () => {
+  tasksList.innerHTML = '';
+  for (let i = 0; i < tasks.length; i += 1) {
+    tasksList.innerHTML += `
+      <li class="task-item">
+        <div class="task-info">
+          <input type="checkbox" name="" id="">
+          <p>${tasks[i].description}</p>
+        </div>
+        <div class="dots">
+          <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+        </div>
+      </li>
+  `;
+  }
+};
+
+populateTasks();
