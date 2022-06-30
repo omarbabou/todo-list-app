@@ -63,3 +63,28 @@ input:hover {
 ul {
   padding: 0;
 }
+
+.task-item {
+  display: flex;
+  justify-content: space-around;
+}
+
+.task-info {
+  display: flex;
+  gap: 20px;
+  width: 66%;
+  align-items: center;
+}
+
+.dots {
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  padding: 10px;
+  font-family: inherit;
+  width: 100%;
+}
