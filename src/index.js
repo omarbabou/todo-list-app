@@ -34,7 +34,7 @@ function renderBook() {
                     todoObject.id
                   })" name="checkbox"></li>        
                   <li class="todoName">${todoObject.title}</li>    
-                  <li><i class="fa fa-ellipsis-v" aria-hidden="true"></li>   
+                  <li><i class="fa fa-ellipsis-v"></i></li>   
                   </ul> `;
   });
 }
