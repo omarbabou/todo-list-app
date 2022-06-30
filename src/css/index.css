@@ -1,5 +1,32 @@
+html {
+  box-sizing: border-box;
+}
 
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
 
-.hello {
-  color: red;
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: #272a31;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgb(245, 245, 245);
+}
+
+article {
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 20px;
 }
