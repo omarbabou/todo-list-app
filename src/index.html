@@ -25,21 +25,19 @@
     ></script>
   </head>
   <body>
-    <main>
-      <article>
-          <header>
-              <h1>Today's TODO List</h1>
-              <i class="fa fa-refresh" aria-hidden="true"></i>
-          </header>
-          <section>
-              <div class="new-task-field">
-                  <input type="text" placeholder="Add to your List">
-              </div>
-              <ul class="tasks">
-              </ul>
-              <button class="clear">Clear all completed</button>
-          </section> 
-      </article>
-  </main>
+    <div class="container">
+      <h1>Today's todo <img src="./images/refresh.png" alt="refresh" /></h1>
+      <form>
+        <input
+          type="text"
+          name="name"
+          id="title"
+          placeholder="Add to your list..."
+          autocomplete="off"
+          minlength="2"
+        />
+        <img src="./images/enter.png" alt="enter" />
+      </form>
+    </div>
   </body>
 </html>
