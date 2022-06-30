@@ -41,3 +41,28 @@ form,
   justify-content: space-between;
   align-items: center;
 }
+
+.todoTask {
+  cursor: auto;
+}
+
+::placeholder {
+  font-style: italic;
+  font-size: 16px;
+}
+
+.todoName {
+  flex: 1;
+  text-align: start;
+  padding-left: 1.3rem;
+}
+
+h1 {
+  font-size: 16px;
+}
+
+#clear-all {
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 600;
+}
