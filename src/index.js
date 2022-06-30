@@ -1,15 +1,21 @@
-import _ from 'lodash';
 import './css/index.css';
 
-function component() {
-  const element = document.createElement('div');
+const tasksList = document.querySelector('ul');
 
-  // Lodash, now imported by this script
-  // eslint-disable-next-line no-undef
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  element.classList.add('hello');
-
-  return element;
-}
-
-document.body.appendChild(component());
+const tasks = [
+  {
+    description: 'Run 30 min',
+    completed: false,
+    index: 0,
+  },
+  {
+    description: 'Finish coding project',
+    completed: false,
+    index: 1,
+  },
+  {
+    description: 'Study math',
+    completed: false,
+    index: 2,
+  },
+];
