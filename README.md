@@ -15,7 +15,7 @@ To-do list" is an application that allows a user to keep track of tasks they nee
 
 ### clone this repository
 
-git clone https://github.com/omarbabou/todo-list-.git
+git clone `https://github.com/omarbabou/todo-list-app.git`
 
 ### Live demo
 
@@ -36,7 +36,7 @@ then run `npm install --save-dev hint@6.x` After creating the .hintrc file, run 
 
 _to install the stylelint that help you to avoid errors in styles code run: `npm install --save-dev stylelint@13.x stylelint-scss@3.x stylelint-config-standard@21.x stylelint-csstree-validator@1.x` Then run `npx stylelint "\*\*/_.{css,scss}" ` after creating a .stylelint.json file
 
-To install Eslint run `npm install --save-dev eslint@7.x eslint-config-airbnb-base@14.x eslint-plugin-import@2.x babel-eslint@10.x` And to fix lint errors run `npx eslint .` 
+To install Eslint run `npm install --save-dev eslint@7.x eslint-config-airbnb-base@14.x eslint-plugin-import@2.x babel-eslint@10.x` And to fix lint errors run `npx eslint .`
 
 Simply install dev server by running `npm install -D webpack-dev-server`, then add `"start": "webpack serve --open"` to this scripts object. after run the application by the following command: `npm start`
 
