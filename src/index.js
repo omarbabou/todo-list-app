@@ -30,11 +30,11 @@ function renderBook() {
   taskList.innerHTML = '';
   todoObjectArray.forEach((todoObject, index) => {
     taskList.innerHTML += `<ul class="todoTask" id="${index + 1}">
-                  <li><input type="checkbox" id="checkbox" onchange="ChnageCompleted(${
+                  <li><input type="checkbox" id="checkbox" onchange="ChangeCompleted(${
                     todoObject.id
                   })" name="checkbox"></li>        
                   <li class="todoName">${todoObject.title}</li>    
-                  <li><img src="./images/dots.png" alt="icon"></li>   
+                  <li><i class="fa fa-ellipsis-v" aria-hidden="true"></li>   
                   </ul> `;
   });
 }
