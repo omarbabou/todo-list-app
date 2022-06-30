@@ -43,27 +43,43 @@ h2,
   padding: 0 1rem;
 }
 
-.todoTask {
-  cursor: auto;
-}
-
-::placeholder {
+.todoInput {
+  width: 100%;
+  height: 60px;
   font-style: italic;
-  font-size: 16px;
 }
 
-.todoName {
+.input,
+.todoInput {
   flex: 1;
-  text-align: start;
-  padding-left: 1.3rem;
+  height: 55px;
+  outline: none;
+  border: none;
+  padding-left: 1.7rem;
 }
 
-h1 {
-  font-size: 16px;
+.delete {
+  display: none;
 }
 
-#clear-all {
+.drag {
+  order: 4;
+}
+
+.showBtn + .delete {
+  display: block;
+}
+
+.showBtn ~ .drag {
+  display: none;
+}
+
+.checkbox:checked + .input {
+  text-decoration: line-through;
+}
+
+.clear {
+  border-bottom: none;
   justify-content: center;
-  font-size: 15px;
-  font-weight: 600;
+  text-align: center;
 }
