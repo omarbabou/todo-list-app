@@ -78,8 +78,9 @@ h2,
   text-decoration: line-through;
 }
 
-.clear {
-  border-bottom: none;
+.clear-all {
   justify-content: center;
-  text-align: center;
+  width: 100%;
+  height: 50px;
+  border: none;
 }
