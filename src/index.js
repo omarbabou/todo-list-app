@@ -7,7 +7,6 @@ import {
 } from './add-remove.js';
 
 const input = document.querySelector('.todoInput');
-const refresh = document.querySelector('.refresh');
 
 let todoArray = '';
 let id = '';
@@ -21,10 +20,6 @@ if (data) {
   todoArray = [];
   id = 0;
 }
-
-refresh.addEventListener('click', () => {
-  localStorage.reload();
-});
 
 const pushToDo = () => {
   const data = localStorage.getItem('todoStore');
