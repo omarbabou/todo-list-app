@@ -26,20 +26,15 @@
   </head>
   <body>
     <div class="container">
-      <h1>Today's todo <i class="fas fa-sync-alt"></i></h1>
-      <form>
-        <input
-          type="text"
-          name="name"
-          id="title"
-          placeholder="Add to your list..."
-          autocomplete="off"
-          minlength="2"
-        />
+      <h2 class="heading">
+        Today's To do<i class="fas fa-sync-alt refresh"></i>
+      </h2>
+      <div class="addTodo">
+        <input type="text" class="todoInput" placeholder="Add your task..." />
         <i class="fas fa-arrow-circle-left"></i>
-      </form>
-      <div id="task-list"></div>
-      <button type="submit" id="clear-all">Clear all inputs</button>
+      </div>
+      <div class="task-content"></div>
+      <button type="submit" class="clear-all">Clear all inputs</button>
     </div>
   </body>
 </html>

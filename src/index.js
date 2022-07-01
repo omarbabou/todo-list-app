@@ -1,42 +1,59 @@
 /* eslint-disable indent */
 import './css/index.css';
+import {
+  renderTodo,
+  addToDo,
+  updateToLocal,
+} from './add-remove.js';
 
-const todoObjectArray = [
-  {
-    id: 1,
-    title: 'Zoom meeting at 11 am',
-    completed: false,
-  },
-  {
-    id: 2,
-    title: 'Go to church...',
-    completed: false,
-  },
-  {
-    id: 3,
-    title: 'walking during the night',
-    completed: false,
-  },
-  {
-    id: 4,
-    title: 'write some codes',
-    completed: false,
-  },
-];
+const input = document.querySelector('.todoInput');
+const refresh = document.querySelector('.refresh');
 
-const taskList = document.getElementById('task-list');
+let todoArray = '';
+let id = '';
+const data = localStorage.getItem('todoStore');
 
-function renderBook() {
-  taskList.innerHTML = '';
-  todoObjectArray.forEach((todoObject, index) => {
-    taskList.innerHTML += `<ul class="todoTask" id="${index + 1}">
-                  <li><input type="checkbox" id="checkbox" onchange="ChangeCompleted(${
-                    todoObject.id
-                  })" name="checkbox"></li>        
-                  <li class="todoName">${todoObject.title}</li>    
-                  <li><i class="fa fa-ellipsis-v"></i></li>   
-                  </ul> `;
-  });
+if (data) {
+  todoArray = JSON.parse(data);
+  id = todoArray.length;
+  renderTodo(todoArray);
+} else {
+  todoArray = [];
+  id = 0;
 }
 
-window.onload = () => renderBook();
+refresh.addEventListener('click', () => {
+  localStorage.reload();
+});
+
+const pushToDo = () => {
+  const data = localStorage.getItem('todoStore');
+
+  if (data) {
+    todoArray = JSON.parse(data);
+    id = todoArray.length;
+    renderTodo(todoArray);
+  } else {
+    todoArray = [];
+    id = 0;
+  }
+  const title = input.value;
+  if (title) {
+    addToDo(title, id, false);
+
+    todoArray.push({
+      title,
+      index: id,
+      completed: false,
+    });
+    renderTodo(todoArray);
+    updateToLocal();
+    id += 1;
+  }
+  input.value = '';
+};
+document.addEventListener('keydown', (event) => {
+  if (event.keyCode === 13) {
+    pushToDo();
+  }
+});
