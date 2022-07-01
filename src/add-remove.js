@@ -1,4 +1,5 @@
 const list = document.querySelector('.task-content');
+const clear = document.querySelector('.clear');
 
 let todoArray = [];
 export const updateToLocal = () => {
