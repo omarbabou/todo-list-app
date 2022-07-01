@@ -69,3 +69,17 @@ export const renderTodo = (array) => {
     });
   });
 };
+
+const clearAll = (todoArray) => {
+  todoArray = todoArray.filter((t) => !t.completed).map((t, i) => {
+    t.index = i;
+    return t;
+  });
+  return todoArray;
+};
+
+clear.addEventListener('click', () => {
+  const arr = clearAll(todoArray);
+  renderTodo(arr);
+  updateToLocal();
+});
