@@ -17,9 +17,9 @@ To-do list" is an application that allows a user to keep track of tasks they nee
 
 git clone `https://github.com/omarbabou/todo-list-app.git`
 
-### Live demo
+### See project
 
-[live_demo]()
+[todo-list-app](https://idriss-todo-list-app.netlify.app/)
 
 ### Install
 
