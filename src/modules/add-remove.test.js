@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/no-self-import
-const { addTask, removeTask } = require('./add-remove.test.js');
+const { addTask, removeTask } = require('./add-remove.js');
 
 describe('addTask function testing', () => {
   test('description swimming index 1', () => {
