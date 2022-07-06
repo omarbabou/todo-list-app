@@ -4,7 +4,7 @@ import {
   renderTodo,
   addToDo,
   updateToLocal,
-} from './add-remove.js';
+} from './modules/add-remove.js';
 
 const input = document.querySelector('.todoInput');
 
