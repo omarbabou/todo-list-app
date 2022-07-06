@@ -7,32 +7,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500&display=swap"
       rel="stylesheet"
     />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
-      integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
     />
-    <link rel="stylesheet" href="./css/index.css" />
-    <title>Todo List</title>
-    <script
-      src="https://kit.fontawesome.com/bf723a76a7.js"
-      crossorigin="anonymous"
-    ></script>
+    <link rel="stylesheet" href="css/index.css" />
+    <title>TODO-list-App</title>
   </head>
   <body>
-    <div class="container">
-      <h2 class="heading">Today's To do<i class="fas fa-sync-alt"></i></h2>
-      <div class="addTodo">
-        <input type="text" class="todoInput" placeholder="Add your task..." />
-        <i class="fas fa-arrow-circle-left"></i>
-      </div>
-      <div class="task-content"></div>
-      <button type="submit" class="clear">clear all completed</button>
-    </div>
+    <main>
+      <article>
+        <header>
+          <h1>Today's TODO List</h1>
+          <i class="fa fa-refresh" aria-hidden="true"></i>
+        </header>
+        <section>
+          <div class="new-task-field">
+            <input type="text" placeholder="Add to your List" />
+          </div>
+          <ul class="tasks"></ul>
+          <button class="clearAll">Clear all completed</button>
+        </section>
+      </article>
+      <p></p>
+    </main>
   </body>
 </html>
