@@ -1,54 +1,90 @@
+/* eslint-disable no-loop-func */
 /* eslint-disable indent */
 import './css/index.css';
-import {
-  renderTodo,
-  addToDo,
-  updateToLocal,
-} from './modules/add-remove.js';
 
-const input = document.querySelector('.todoInput');
+const {
+  addTask,
+  removeTask,
+  removeAllCompleted,
+} = require('./modules/add-remove.js');
 
-let todoArray = '';
-let id = '';
-const data = localStorage.getItem('todoStore');
+const tasksList = document.querySelector('ul');
+const addTaskField = document.querySelector('.new-task-field input');
+let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
-if (data) {
-  todoArray = JSON.parse(data);
-  id = todoArray.length;
-  renderTodo(todoArray);
-} else {
-  todoArray = [];
-  id = 0;
-}
-
-const pushToDo = () => {
-  const data = localStorage.getItem('todoStore');
-
-  if (data) {
-    todoArray = JSON.parse(data);
-    id = todoArray.length;
-    renderTodo(todoArray);
-  } else {
-    todoArray = [];
-    id = 0;
+const populateTasks = () => {
+  tasksList.innerHTML = '';
+  for (let i = 0; i < tasks.length; i += 1) {
+    tasksList.innerHTML += `<li class="task-item task-item${tasks[i].index}">
+        <div class="task-info"><input type="checkbox" name=""><input class="task task${tasks[i].index}" type="text" placeholder="${tasks[i].description}"></div>
+        <div class="dots">
+          <i class="fa fa-ellipsis-v remove" aria-hidden="true" id="i${tasks[i].index}"></i>
+        </div>
+      </li>`;
   }
-  const title = input.value;
-  if (title) {
-    addToDo(title, id, false);
 
-    todoArray.push({
-      title,
-      index: id,
-      completed: false,
+  const inputs = document.querySelectorAll('.task');
+  const checks = document.querySelectorAll('[type="checkbox"]');
+  const deleteButton = document.querySelectorAll('.remove');
+  const clearAll = document.querySelector('.clearAll');
+
+  for (let i = 0; i < tasks.length; i += 1) {
+    checks[i].checked = tasks[i].completed;
+    if (checks[i].checked) {
+      inputs[i].classList.add('strike');
+    } else {
+      inputs[i].classList.remove('strike');
+    }
+    checks[i].addEventListener('click', () => {
+      if (checks[i].checked) {
+        tasks[i].completed = true;
+        inputs[i].classList.add('strike');
+      } else {
+        tasks[i].completed = false;
+        inputs[i].classList.remove('strike');
+      }
+      localStorage.setItem('tasks', JSON.stringify(tasks));
     });
-    renderTodo(todoArray);
-    updateToLocal();
-    id += 1;
+
+    clearAll.addEventListener('click', () => {
+      tasks = removeAllCompleted(tasks);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+      populateTasks();
+    });
+
+    inputs[i].addEventListener('focusin', () => {
+      deleteButton[i].classList.remove('fa-ellipsis-v');
+      deleteButton[i].classList.add('fa-trash');
+      deleteButton[i].addEventListener('click', (e) => {
+        const indexToDelete = e.target.id[1];
+        removeTask(indexToDelete, tasks);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+        populateTasks();
+      });
+    });
+
+    inputs[i].addEventListener('input', (e) => {
+      e.target.setAttribute('placeholder', e.target.value);
+      tasks[i].description = e.target.value;
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    });
+
+    inputs[i].addEventListener('focusout', (e) => {
+      e.target.value = '';
+      deleteButton[i].classList.add('fa-ellipsis-v');
+      deleteButton[i].classList.remove('fa-trash');
+    });
   }
-  input.value = '';
 };
-document.addEventListener('keydown', (event) => {
-  if (event.keyCode === 13) {
-    pushToDo();
+
+addTaskField.addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    addTask(addTaskField.value, tasks);
+    addTaskField.value = '';
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+    populateTasks();
   }
 });
+
+populateTasks();
