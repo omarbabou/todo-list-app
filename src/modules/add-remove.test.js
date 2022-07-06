@@ -1,4 +1,4 @@
-const { addTask, removeTask } = require('./add-remove.js');
+const { addTask, removeTask, removeAllCompleted } = require('./add-remove.js');
 
 describe('addTask function testing', () => {
   test('description swimming index 1', () => {
@@ -70,5 +70,46 @@ describe('removeTask function testing', () => {
     expect(
       removeTask(3, [{ description: 'swimming', completed: false, index: 1 }]),
     ).toEqual([{ description: 'swimming', completed: false, index: 1 }]);
+  });
+});
+
+describe('removeAllCompleted function testing', () => {
+  test('test 1', () => {
+    expect(
+      removeAllCompleted([
+        { description: 'swimming', completed: true, index: 1 },
+        { description: 'cooking', completed: true, index: 2 },
+        { description: 'date', completed: false, index: 1 },
+        { description: 'running', completed: false, index: 2 },
+      ]),
+    ).toEqual([
+      { description: 'date', completed: false, index: 1 },
+      { description: 'running', completed: false, index: 2 },
+    ]);
+  });
+  test('test 2', () => {
+    expect(
+      removeAllCompleted([
+        { description: 'swimming', completed: true, index: 1 },
+        { description: 'cooking', completed: true, index: 2 },
+        { description: 'date', completed: true, index: 1 },
+        { description: 'running', completed: true, index: 2 },
+      ]),
+    ).toEqual([]);
+  });
+  test('test 3', () => {
+    expect(
+      removeAllCompleted([
+        { description: 'swimming', completed: false, index: 1 },
+        { description: 'cooking', completed: false, index: 2 },
+        { description: 'date', completed: false, index: 1 },
+        { description: 'running', completed: false, index: 2 },
+      ]),
+    ).toEqual([
+      { description: 'swimming', completed: false, index: 1 },
+      { description: 'cooking', completed: false, index: 2 },
+      { description: 'date', completed: false, index: 1 },
+      { description: 'running', completed: false, index: 2 },
+    ]);
   });
 });
